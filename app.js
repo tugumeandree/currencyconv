@@ -4,14 +4,23 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
+
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
 var app = express();
 
+var options={
+  host:'https://www.currencyconverterapi.com',
+  port:3000,
+  path:'/api/v5/convert?q=USD_PHP,PHP_USD&compact=ultra&callback=sampleCallback',
+  method:'GET'
+
+}
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
-//app.set('view engine', 'hbs');
+app.set('view engine', 'hbs');
 
 app.use(logger('dev'));
 app.use(express.json());
